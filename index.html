@@ -1110,7 +1110,7 @@ Also supported:
       $("shareLink").value = `${getCleanPageUrl()}?test=${encodeURIComponent(state.testId)}`;
       $("testFileHint").textContent = `Upload JSON as tests/${state.testId}.json and PDF as tests/assets/${state.testId}.pdf in your GitHub repository.`;
       $("sharePanel").classList.remove("hidden");
-      setStatus($("teacherStatus"), "Short student link ready. Download the test file and upload it to GitHub Pages under the tests folder.", "good");
+      setStatus($("studentStatus"), "Short student link ready. Download the test file and upload it to GitHub Pages under the tests folder.", "good");
     }
 
     function switchMode(mode) {
