@@ -1058,20 +1058,41 @@ Also supported:
       updateKeyPreview();
     }
 
-    function renderQuestionPdf() {
-      const viewer = $("questionPdfViewer");
-      const status = $("questionPdfStatus");
-      const pdfSource = state.questionPdf && (state.questionPdf.dataUrl || state.questionPdf.url);
-      if (!pdfSource) {
-        viewer.classList.add("hidden");
-        viewer.removeAttribute("src");
-        status.classList.remove("hidden");
-        status.textContent = "Upload a question PDF to show it here.";
-        return;
-      }
-      viewer.src = pdfSource;
-      viewer.classList.remove("hidden");
-      status.classList.add("hidden");
+  function renderQuestionPdf() {
+    const viewer = $("questionPdfViewer");
+    const status = $("questionPdfStatus");
+    
+    if (!state.questionPdf || !state.questionPdf.dataUrl) {
+      viewer.classList.add("hidden");
+      status.classList.remove("hidden");
+      status.textContent = "Upload a question PDF to show it here.";
+      return;
+  }
+
+  try {
+    const base64 = state.questionPdf.dataUrl.split(",")[1];
+
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+
+    const blob = new Blob([bytes], {
+      type: "application/pdf"
+    });
+
+    const pdfUrl = URL.createObjectURL(blob);
+
+    viewer.src = pdfUrl;
+    viewer.classList.remove("hidden");
+    status.classList.add("hidden");
+
+  } catch (err) {
+    status.textContent = "Unable to display PDF on this device.";
+    status.classList.remove("hidden");
+  }
     }
 
     function updateKeyPreview() {
