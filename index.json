@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tests": [
+    {
+      "id": "practice-omr-test-20260618134232",
+      "title": "Practice OMR Test",
+      "file": "tests/practice-omr-test-20260618134232.json",
+      "questions": 45,
+      "minutes": 60
+    }
+  ]
+}
