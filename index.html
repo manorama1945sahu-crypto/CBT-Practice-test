@@ -781,14 +781,13 @@ Also supported:
 
       <section id="sharePanel" class="panel share-panel hidden">
         <h2>Share student link</h2>
-        <p class="hint" style="margin-bottom: 12px;">For GitHub Pages, download the test data file and question PDF file, then upload both to your repo as shown below. This keeps deployment small and reliable.</p>
+        <p class="hint" style="margin-bottom: 12px;">For GitHub Pages, download the test data file and upload it to your repo inside a folder named <strong>tests</strong>. Then share the short student link below.</p>
         <div class="link-box">
-          <input id="shareLink" readonly />
+          <input id="shareLink" readonly="">
           <button id="copyLinkBtn" class="btn primary" type="button">Copy</button>
         </div>
         <div class="button-row" style="margin-top: 10px;">
           <button id="downloadTestBtn" class="btn success" type="button">Download test file</button>
-          <button id="downloadQuestionPdfBtn" class="btn ghost" type="button">Download question PDF</button>
         </div>
         <p id="testFileHint" class="hint" style="margin-top: 10px;"></p>
       </section>
